@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../components/Navbar.css'; 
 import logoImage from '../assets/logo.png';
+import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -11,6 +12,10 @@ function Navbar() {
     localStorage.removeItem('token');
     navigate('/login');
   };
+
+  const handleUP = () => {
+    navigate('/profile');
+  }
 
   return (
     <nav className="navbar">
@@ -27,8 +32,19 @@ function Navbar() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <button className="navbar-button" onClick={handleLogout}>
-                Logout
+              <Link to="/universities">Universities</Link>
+            </li>
+            <li>
+              <Link to="/myreviews">My Reviews</Link>
+            </li>
+            <li>
+              <button className="userprofile-button" onClick={handleUP}>
+                <FaUserCircle title="User Profile" />
+              </button>
+            </li>
+            <li>
+              <button className="logout-button" onClick={handleLogout}>
+              <FaSignOutAlt title="Logout" />
               </button>
             </li>
           </>

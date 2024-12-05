@@ -1,10 +1,8 @@
-// routes/restaurants.js
 const express = require('express');
 const { Restaurant, Review } = require('../models');
 
 const router = express.Router();
 
-// Get all restaurants
 router.get('/', async (req, res) => {
   try {
     const restaurants = await Restaurant.findAll();
@@ -14,7 +12,22 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a restaurant by ID
+router.get('/university/:universityId', async (req, res) => {
+  try {
+    const { universityId } = req.params;
+    const restaurants = await Restaurant.findAll({
+      where: { res_universityid: universityId },
+    });
+
+    if (restaurants.length === 0) {
+      return res.status(404).json({ error: 'No restaurants found with this university.' });
+    }
+    res.json(restaurants);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const restaurant = await Restaurant.findByPk(req.params.id, {
@@ -29,7 +42,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new restaurant
 router.post('/', async (req, res) => {
   try {
     const restaurant = await Restaurant.create(req.body);
@@ -39,7 +51,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a restaurant
 router.put('/:id', async (req, res) => {
   try {
     const [updated] = await Restaurant.update(req.body, {
@@ -56,7 +67,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a restaurant
 router.delete('/:id', async (req, res) => {
   try {
     const deleted = await Restaurant.destroy({

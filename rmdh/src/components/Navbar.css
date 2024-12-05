@@ -41,12 +41,20 @@
     text-decoration: none;
   }
   
-  .navbar-button {
-    background: none;
+  .userprofile-button {
+    background: #1f99eb;
     border: none;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
+  }
+
+  .logout-button {
+    background: #eb1f1f;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
   }
   
   .navbar-button:hover,

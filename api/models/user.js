@@ -2,6 +2,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const University = require('./university');
+const Review = require('./review');
 
 const User = sequelize.define(
   'users',
@@ -59,7 +60,11 @@ const User = sequelize.define(
   }
 );
 
-// Define associations
+User.hasMany(Review, {
+  foreignKey: 'rev_userid',
+  sourceKey: 'user_userid',
+});
+
 User.belongsTo(University, {
   foreignKey: 'user_universityid',
   targetKey: 'uni_universityid',

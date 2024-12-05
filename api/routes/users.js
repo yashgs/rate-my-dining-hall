@@ -1,4 +1,3 @@
-// routes/users.js
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -8,7 +7,6 @@ require('dotenv').config();
 
 const router = express.Router();
 
-// Register a new user
 router.post('/register', async (req, res) => {
   try {
     const { user_email, password, ...rest } = req.body;
@@ -25,7 +23,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login a user
 router.post('/login', async (req, res) => {
   try {
     const { user_email, password } = req.body;
@@ -44,7 +41,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Get user profile
 router.get('/profile', auth, async (req, res) => {
   try {
     const user = await User.findByPk(req.user.userId, {
@@ -59,7 +55,6 @@ router.get('/profile', auth, async (req, res) => {
   }
 });
 
-// Update user profile
 router.put('/profile', auth, async (req, res) => {
   try {
     const [updated] = await User.update(req.body, {
@@ -78,7 +73,6 @@ router.put('/profile', auth, async (req, res) => {
   }
 });
 
-// Delete user
 router.delete('/profile', auth, async (req, res) => {
   try {
     const deleted = await User.destroy({

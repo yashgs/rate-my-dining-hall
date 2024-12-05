@@ -1,0 +1,17 @@
+/* src/components/StarRating.css */
+.star-rating {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+  }
+  
+  .star.filled {
+    color: #ffc107;
+  }
+  

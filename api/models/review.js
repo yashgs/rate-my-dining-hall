@@ -52,15 +52,4 @@ const Review = sequelize.define(
   }
 );
 
-// Define associations
-Review.belongsTo(User, {
-  foreignKey: 'rev_userid',
-  targetKey: 'user_userid',
-});
-
-Review.belongsTo(Restaurant, {
-  foreignKey: 'rev_restaurantid',
-  targetKey: 'res_restaurantid',
-});
-
 module.exports = Review;

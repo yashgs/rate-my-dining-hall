@@ -26,6 +26,7 @@ function Login() {
 
       // Store the token in localStorage (or sessionStorage)
       localStorage.setItem('token', token);
+      localStorage.setItem('userID', userId);
 
       // Redirect to home page
       navigate('/');

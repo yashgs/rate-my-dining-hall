@@ -19,7 +19,19 @@ router.get('/', async (req, res) => {
 router.get('/restaurant/:restaurantId', async (req, res) => {
   try {
     const reviews = await Review.findAll({
-      where: { rev_restaurantID: req.params.restaurantId },
+      where: { rev_restaurantid: req.params.restaurantId },
+    });
+    res.json(reviews);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// GEts review for specific user
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const reviews = await Review.findAll({
+      where: { rev_userid: req.params.userId },
     });
     res.json(reviews);
   } catch (error) {
@@ -40,7 +52,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new review
 router.post('/', auth, async (req, res) => {
   try {
     const review = await Review.create({
@@ -53,7 +64,6 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// Update a review
 router.put('/:id', auth, async (req, res) => {
   try {
     const review = await Review.findByPk(req.params.id);

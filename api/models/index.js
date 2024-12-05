@@ -1,4 +1,3 @@
-// models/index.js
 const sequelize = require('../config/database');
 const University = require('./university');
 const User = require('./user');
@@ -14,6 +13,11 @@ University.hasMany(User, {
 University.hasMany(Restaurant, {
   foreignKey: 'res_universityid',
   sourceKey: 'uni_universityid',
+});
+
+Review.belongsTo(User, {
+  foreignKey: 'rev_userid',
+  targetKey: 'user_userid',
 });
 
 User.hasMany(Review, {
