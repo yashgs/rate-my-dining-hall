@@ -21,7 +21,7 @@ app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/reviews', reviewRoutes);
 
 // Start server after successful database connection
-const PORT = process.env.PORT || 5000;
+const PORT = 5001; //IMPORTANT make sure this matches axiosConfig.js
 
 sequelize
   .authenticate()
