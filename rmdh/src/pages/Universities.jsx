@@ -39,11 +39,11 @@ function Universities() {
   return (
     <div className="main-content">
       <div className="page-container">
-        <h2>Universities</h2>
+        <h2 className="universities-title">Universities</h2>
         <ul className="universities-list">
           {universities.map((university) => (
-            <li key={university.uni_universityid}>
-              <Link to={`/university/${university.uni_universityid}`}>
+            <li key={university.uni_universityid} className="university-item">
+              <Link to={`/university/${university.uni_universityid}`} className="university-link">
                 {university.uni_name}
               </Link>
             </li>
@@ -52,6 +52,7 @@ function Universities() {
       </div>
     </div>
   );
+  
 }
 
 export default Universities;

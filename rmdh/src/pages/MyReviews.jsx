@@ -68,11 +68,11 @@ const navigate = useNavigate();
   return (
     <div className="main-content">
       <div className="page-container">
-        <h2>My Reviews</h2>
+        <h2 className="universities-title">My Reviews</h2>
         <ul className="reviews-list">
           {reviews.map((review) => (
-            <li key={review.rev_universityid}>
-                <ReviewButton review={review} />
+            <li key={review.rev_universityid} className="review-item">
+              <ReviewButton review={review} />
             </li>
           ))}
         </ul>

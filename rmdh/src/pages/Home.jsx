@@ -60,21 +60,28 @@ function Home() {
   }
 
   return (
-    <div className="page-container">
+  <div className="page-container">
+    <div className="welcome-message">
       <h2>Welcome back, {user.user_first_name}!</h2>
-      <p>Restaurants you may like at your school, <a href={"/university/" + user.user_universityid}> <strong>{userUniversity.uni_name}</strong></a>.</p>
-      
-      <ul className="unirests-list">
-          {universityRestaurants.map((uRest) => (
-            <li key={uRest.res_restaurantid}>
-              <a href={"/restaurant/" + uRest.res_restaurantid}>
-                <RestaurantButton restaurant={uRest} />
-              </a>
-            </li>
-          ))}
-        </ul>
+      <p>
+        Discover restaurants you may like at your school,{' '}
+        <a href={"/university/" + user.user_universityid} className="university-link">
+          <strong>{userUniversity.uni_name}</strong>
+        </a>
+      </p>
     </div>
-  );
+
+    <ul className="unirests-list">
+      {universityRestaurants.map((uRest) => (
+        <li key={uRest.res_restaurantid} className="restaurant-item">
+          <a href={"/restaurant/" + uRest.res_restaurantid}>
+            <RestaurantButton restaurant={uRest} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 }
 
 export default Home;

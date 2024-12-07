@@ -39,107 +39,118 @@ function Register() {
   };
 
   return (
-    <div className="page-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Add form fields for each required input */}
-        <div>
-          <label>First Name:</label>
-          <input
-            type="text"
-            name="user_first_name"
-            value={formData.user_first_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Last Name:</label>
-          <input
-            type="text"
-            name="user_last_name"
-            value={formData.user_last_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="user_email"
-            value={formData.user_email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>University ID:</label>
-          <input
-            type="number"
-            name="user_universityid"
-            value={formData.user_universityid}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Proximity Preference (miles):</label>
-          <input
-            type="number"
-            name="user_proximity_preference"
-            value={formData.user_proximity_preference}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Price Range:</label>
-          <select
-            name="user_price_range"
-            value={formData.user_price_range}
-            onChange={handleChange}
-          >
-            {priceRanges.map((price) => (
-              <option key={price} value={price}>
-                {price}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Cuisine Preferences (comma-separated):</label>
-          <input
-            type="text"
-            name="user_cuisine_preference"
-            value={formData.user_cuisine_preference}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Dietary Restrictions:</label>
-          <input
-            type="text"
-            name="user_dietary_restriction"
-            value={formData.user_dietary_restriction}
-            onChange={handleChange}
-          />
-        </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Register</button>
-      </form>
-      <p>
-        Already have an account? <a href="/login">Login Here</a>
-      </p>
+    <div className="login-container">
+      <div className="login-card">
+        <h2 className="login-title">Create an Account</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-grid">
+            <div className="input-group">
+              <label htmlFor="user_first_name">First Name</label>
+              <input
+                type="text"
+                id="user_first_name"
+                name="user_first_name"
+                value={formData.user_first_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_last_name">Last Name</label>
+              <input
+                type="text"
+                id="user_last_name"
+                name="user_last_name"
+                value={formData.user_last_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_email">Email</label>
+              <input
+                type="email"
+                id="user_email"
+                name="user_email"
+                value={formData.user_email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_universityid">University ID</label>
+              <input
+                type="number"
+                id="user_universityid"
+                name="user_universityid"
+                value={formData.user_universityid}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_proximity_preference">Proximity (miles)</label>
+              <input
+                type="number"
+                id="user_proximity_preference"
+                name="user_proximity_preference"
+                value={formData.user_proximity_preference}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_price_range">Price Range</label>
+              <select
+                name="user_price_range"
+                value={formData.user_price_range}
+                onChange={handleChange}
+              >
+                {priceRanges.map((price) => (
+                  <option key={price} value={price}>
+                    {price}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_cuisine_preference">Cuisine Preferences</label>
+              <input
+                type="text"
+                id="user_cuisine_preference"
+                name="user_cuisine_preference"
+                value={formData.user_cuisine_preference}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="user_dietary_restriction">Dietary Restrictions</label>
+              <input
+                type="text"
+                id="user_dietary_restriction"
+                name="user_dietary_restriction"
+                value={formData.user_dietary_restriction}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          {error && <p className="error">{error}</p>}
+          <button type="submit" className="login-button">Register</button>
+        </form>
+        <p className="login-footer">
+          Already have an account? <a href="/login">Login Here</a>
+        </p>
+      </div>
     </div>
   );
 }

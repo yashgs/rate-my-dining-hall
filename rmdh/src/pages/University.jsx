@@ -52,15 +52,17 @@ function University() {
   }
 
   return (
-    <div className="main-content">
-      <div className="page-container">
-        <h2>{university.uni_name}</h2>
-        <p>
-          <strong>Latitude:</strong> {university.latitude}, <strong>Longitude:</strong> {university.longitude}
-        </p>
+  <div className="main-content">
+    <div className="page-container">
+      <h2 className="universities-title">{university.uni_name}</h2>
+      <p>
+        <strong>Latitude:</strong> {university.latitude}, <strong>Longitude:</strong> {university.longitude}
+      </p>
+      <div className="restaurants-container">
+        <h3>Restaurants at {university.uni_name}</h3>
         <ul className="unirests-list">
           {universityRestaurants.map((uRest) => (
-            <li key={uRest.res_restaurantid}>
+            <li key={uRest.res_restaurantid} className="restaurant-item">
               <a href={"/restaurant/" + uRest.res_restaurantid}>
                 <RestaurantButton restaurant={uRest} />
               </a>
@@ -69,7 +71,9 @@ function University() {
         </ul>
       </div>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default University;

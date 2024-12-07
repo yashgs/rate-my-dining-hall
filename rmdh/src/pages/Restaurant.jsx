@@ -58,18 +58,21 @@ const navigate = useNavigate();
   return (
     <div className="main-content">
       <div className="page-container">
-        <h2>{restaurant.res_name}</h2>
-        <p><strong>{restaurant.res_cuisine} Cuisine</strong> • <strong>Menu:</strong> {restaurant.res_menu} • {restaurant.res_price_range}</p>
-        <button onClick={handlePostReview}>
-            Review
-        </button>
-        <ul className="reviews-list">
-          {restaurant.reviews.map((review) => (
-            <li key={review.uni_universityid}>
+        <h2 className="universities-title">{restaurant.res_name}</h2>
+        <p>
+          <strong>{restaurant.res_cuisine} Cuisine</strong> • <strong>Menu:</strong> {restaurant.res_menu} • {restaurant.res_price_range}
+        </p>
+        <button className="review-button" onClick={handlePostReview}>Write a Review</button>
+        <div className="reviews-section">
+          <h3>Customer Reviews</h3>
+          <ul className="reviews-list">
+            {restaurant.reviews.map((review) => (
+              <li key={review.uni_universityid} className="review-item">
                 <ReviewButton review={review} />
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
